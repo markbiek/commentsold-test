@@ -40,8 +40,8 @@ class AddUsersFields extends Migration {
 				->string('billing_plan')
 				->default('')
 				->nullable(false);
-			$table->timestamp('trial_starts_at');
-			$table->timestamp('trial_ends_at');
+			$table->timestamp('trial_starts_at')->nullable(true);
+			$table->timestamp('trial_ends_at')->nullable(true);
 		});
 	}
 
