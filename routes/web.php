@@ -22,6 +22,11 @@ Route::middleware(['auth'])->group(function () {
 		\App\Http\Controllers\DashboardController::class,
 		'show',
 	])->name('dashboard');
+
+	Route::post('/products/add', [
+		\App\Http\Controllers\DashboardController::class,
+		'add_product',
+	])->name('add_product');
 });
 
 require __DIR__ . '/auth.php';
