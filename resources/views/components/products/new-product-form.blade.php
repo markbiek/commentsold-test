@@ -1,5 +1,5 @@
 <h2>Add New Product</h2>
-<form class="mt-4 pb-8" method="POST" action="{{ route('add_product') }}">
+<form class="form mt-4 pb-8" method="POST" action="{{ route('add_product') }}">
 	@csrf
 	<div class="form-group">
 		<label for="product_name">Name:</label>
