@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 class EditProductRow extends Component {
+	public $deleted;
 	public $toggleEdit;
 	public $productName;
 	public $productStyle;
@@ -42,5 +43,10 @@ class EditProductRow extends Component {
 		$this->product->save();
 
 		$this->toggleEdit();
+	}
+
+	public function deleteProduct() {
+		$this->deleted = true;
+		$this->product->delete();
 	}
 }
