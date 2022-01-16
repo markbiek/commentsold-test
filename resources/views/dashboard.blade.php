@@ -14,6 +14,7 @@
 					<table class="table-auto table-striped border-collapse mt-4">
 						<thead>
 							<tr class="text-left">
+								<th></th>
 								<th>Name</th>
 								<th>Style</th>
 								<th>Brand</th>
@@ -21,11 +22,7 @@
 						</thead>
 						<tbody>
 							@foreach ($products as $product)
-								<tr>
-									<td>{{ $product->product_name }}</td>
-									<td>{{ $product->style }}</td>
-									<td>{{ $product->brand }}</td>
-								</tr>
+								<livewire:edit-product-row :product="$product" />
 							@endforeach
 						</tbody>
 					</table>
