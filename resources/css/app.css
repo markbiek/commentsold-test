@@ -1,3 +1,40 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+h1 {
+	@apply text-2xl font-bold;
+}
+
+form {
+	width: 50%;
+}
+
+form button,
+form input[type='submit'] {
+	@apply border border-black pl-2 pr-2 hover:bg-black hover:text-white hover:cursor-pointer;
+}
+
+.table-striped thead tr th {
+	@apply border-b-4 border-slate-500;
+}
+
+.table-striped tr td {
+	@apply border border-slate-500 p-2;
+}
+
+.table-striped tr:nth-child(even) td {
+	@apply bg-slate-200;
+}
+
+.form-group {
+	@apply grid grid-cols-2 mb-2;
+}
+
+.form-group input[type='text'] {
+	@apply h-8;
+}
+
+.alert.alert-danger {
+	@apply text-red-700;
+}

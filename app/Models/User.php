@@ -56,4 +56,8 @@ class User extends Authenticatable {
 	public function scopeSuperadmin($query) {
 		return $query->where('superadmin', true);
 	}
+
+	public function products() {
+		return $this->hasMany(Product::class, 'admin_id');
+	}
 }
