@@ -24,4 +24,12 @@ class Product extends Model {
 		'note',
 		'admin_id',
 	];
+
+	public function user() {
+		return $this->belongsTo(User::class, 'admin_id');
+	}
+
+	public function inventory() {
+		return $this->hasMany(Inventory::class);
+	}
 }

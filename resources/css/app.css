@@ -6,12 +6,16 @@ h1 {
 	@apply text-2xl font-bold;
 }
 
-form {
+a {
+	@apply border-b border-slate-500 hover:border-none;
+}
+
+.form {
 	width: 50%;
 }
 
-form button,
-form input[type='submit'] {
+.form button,
+.form input[type='submit'] {
 	@apply border border-black pl-2 pr-2 hover:bg-black hover:text-white hover:cursor-pointer;
 }
 

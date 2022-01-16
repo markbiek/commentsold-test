@@ -16,6 +16,7 @@
 			<td>{{ $product->product_name }}</td>
 			<td>{{ $product->style }}</td>
 			<td>{{ $product->brand }}</td>
+			<td><a href="/inventory/{{ $product->id }}">(View Inventory)</a></td>
 		@endif
 	</tr>
 @else

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -59,5 +60,22 @@ class User extends Authenticatable {
 
 	public function products() {
 		return $this->hasMany(Product::class, 'admin_id');
+	}
+
+	public function inventory() {
+		return $this->hasMany(Product::class, 'admin_id')
+			->join('inventories', function ($join) {
+				$join->on('inventories.product_id', 'products.id');
+			})
+			->where('admin_id', $this->id);
+	}
+
+	public function getInventoryTotalAttribute() {
+		return DB::table('inventories')
+			->select(DB::raw('COUNT(*) AS total'))
+			->leftJoin('products', 'products.id', '=', 'inventories.product_id')
+			->where('products.admin_id', $this->id)
+			->pluck('total')
+			->first();
 	}
 }
