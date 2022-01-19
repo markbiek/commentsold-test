@@ -5,6 +5,7 @@
 			<th>Name</th>
 			<th>Style</th>
 			<th>Brand</th>
+			<th>Potential Revenue</th>
 			<th></th>
 		</tr>
 	</thead>

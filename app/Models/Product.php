@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model {
 	use HasFactory;
@@ -31,5 +32,17 @@ class Product extends Model {
 
 	public function inventory() {
 		return $this->hasMany(Inventory::class);
+	}
+
+	public function getPotentialRevenueCentsAttribute() {
+		return DB::table('inventories')
+			->select(
+				DB::raw(
+					'SUM(quantity * price_cents) as potential_revenue_cents',
+				),
+			)
+			->where('product_id', $this->id)
+			->pluck('potential_revenue_cents')
+			->first();
 	}
 }
