@@ -29,7 +29,17 @@ class Inventory extends Model {
 		'note',
 	];
 
+	protected $appends = ['price', 'cost'];
+
 	public function product() {
 		return $this->belongsTo('App\Models\Product');
+	}
+
+	public function getPriceAttribute() {
+		return '$' . number_format($this->price_cents / 100, 2);
+	}
+
+	public function getCostAttribute() {
+		return '$' . number_format($this->cost_cents / 100, 2);
 	}
 }

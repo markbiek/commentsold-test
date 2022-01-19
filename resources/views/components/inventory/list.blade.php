@@ -22,8 +22,8 @@
 					<td>{{ $item->quantity }}</td>
 					<td>{{ $item->color }}</td>
 					<td>{{ $item->size }}</td>
-					<td>{{ $item->price_cents }}</td>
-					<td>{{ $item->cost_cents }}</td>
+					<td>${{ number_format($item->price_cents / 100, 2) }}</td>
+					<td>${{ number_format($item->cost_cents/ 100, 2) }}</td>
 					@if (!isset($product))<td><a href="/inventory/{{ $item->product_id }}">(View Inventory)</a></td>@endif
 				</tr>
 			@endforeach
