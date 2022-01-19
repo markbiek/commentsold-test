@@ -12,14 +12,32 @@ class DashboardController extends Controller {
 	public function show(Request $request) {
 		$user = Auth::user();
 
+		$products = $user->products()->get();
+
+		$direction = 'desc';
+		if ($request->has('direction')) {
+			$direction = $request->query('direction');
+		}
+
+		if (
+			$request->has('sort') &&
+			$request->query('sort') === 'potential_revenue'
+		) {
+			if ($direction === 'desc') {
+				$products = $products->sortByDesc('potential_revenue_cents');
+			} else {
+				$products = $products->sortBy('potential_revenue_cents');
+			}
+		}
+
+		if ($direction === 'desc') {
+			$direction = 'asc';
+		}
+
 		return view('dashboard', [
 			'user' => $user,
-			'products' => $user
-				->products()
-				->orderBy('brand')
-				->orderBy('product_name')
-				->orderBy('style')
-				->get(),
+			'products' => $products,
+			'direction' => $direction,
 		]);
 	}
 

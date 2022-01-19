@@ -5,7 +5,7 @@
 			<th>Name</th>
 			<th>Style</th>
 			<th>Brand</th>
-			<th>Potential Revenue</th>
+			<th><a href="?sort=potential_revenue&direction={{ $direction }}">Potential Revenue</a></th>
 			<th></th>
 		</tr>
 	</thead>

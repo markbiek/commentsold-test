@@ -26,6 +26,8 @@ class Product extends Model {
 		'admin_id',
 	];
 
+	protected $appends = ['potential_revenue_cents'];
+
 	public function user() {
 		return $this->belongsTo(User::class, 'admin_id');
 	}
